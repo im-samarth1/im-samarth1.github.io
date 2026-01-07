@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAMARTH | Digital Ghost</title>
+  <meta name="description" content="Portfolio of Samarth - A 19-year-old code warrior from Karnataka, India. Cybersecurity enthusiast and self-taught developer." />
+  <meta name="author" content="Samarth" />
+  <meta property="og:title" content="SAMARTH | Digital Ghost" />
+  <meta property="og:description" content="Portfolio of Samarth - Cybersecurity enthusiast and self-taught developer from Karnataka, India." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@tech_Samarth" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --background: hsl(0, 0%, 3%);
+      --foreground: hsl(120, 100%, 50%);
+      --card: hsl(0, 0%, 5%);
+      --card-foreground: hsl(120, 100%, 50%);
+      --primary: hsl(120, 100%, 50%);
+      --primary-foreground: hsl(0, 0%, 0%);
+      --secondary: hsl(180, 100%, 50%);
+      --secondary-foreground: hsl(0, 0%, 0%);
+      --muted: hsl(0, 0%, 10%);
+      --muted-foreground: hsl(120, 50%, 40%);
+      --accent: hsl(0, 100%, 50%);
+      --accent-foreground: hsl(0, 0%, 100%);
+      --border: hsl(120, 100%, 20%);
+      --font-mono: 'Share Tech Mono', monospace;
+      --font-cyber: 'Orbitron', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-mono);
+      background: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+      
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Matrix Background */
+    .matrix-bg {
+      background: radial-gradient(ellipse at center, hsl(0, 0%, 8%) 0%, hsl(0, 0%, 3%) 100%);
+    }
+
+    /* Scanlines */
+    .scanlines {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scanlines::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.3) 2px,
+        rgba(0, 0, 0, 0.3) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Neon Glow */
+    .neon-glow {
+      text-shadow: 
+        0 0 5px var(--primary),
+        0 0 10px var(--primary),
+        0 0 20px var(--primary),
+        0 0 40px var(--primary);
+    }
+
+    .danger-glow {
+      text-shadow: 
+        0 0 5px var(--accent),
+        0 0 10px var(--accent),
+        0 0 20px var(--accent),
+        0 0 40px var(--accent);
+    }
+
+    /* Cyber Border */
+    .cyber-border {
+      border: 1px solid var(--primary);
+      box-shadow: 
+        0 0 5px hsla(120, 100%, 50%, 0.5),
+        inset 0 0 5px hsla(120, 100%, 50%, 0.1);
+    }
+
+    /* Glitch Text */
+    .text-glitch {
+      animation: glitch 2s infinite;
+      position: relative;
+    }
+
+    .text-glitch::before,
+    .text-glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .text-glitch::before {
+      animation: glitch-1 0.3s infinite;
+      color: var(--accent);
+      z-index: -1;
+    }
+
+    .text-glitch::after {
+      animation: glitch-2 0.3s infinite;
+      color: var(--secondary);
+      z-index: -2;
+    }
+
+    /* Skill Bar */
+    .skill-bar {
+      background: linear-gradient(90deg, 
+        var(--primary) 0%, 
+        var(--secondary) 50%, 
+        var(--accent) 100%
+      );
+      box-shadow: 0 0 10px hsla(120, 100%, 50%, 0.5);
+    }
+
+    /* Glitch Card */
+    .glitch-card {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .glitch-card:hover {
+      animation: card-glitch 0.3s ease;
+      box-shadow: 
+        -2px 0 var(--accent),
+        2px 0 var(--secondary);
+    }
+
+    /* Terminal Cursor */
+    .terminal-cursor {
+      animation: blink 1s step-end infinite;
+    }
+
+    /* Pulse Glow */
+    .animate-pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      background: hsla(0, 0%, 3%, 0.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      color: var(--muted-foreground);
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .hero-text {
+      order: 2;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-text {
+        order: 1;
+      }
+    }
+
+    .hero-image {
+      order: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-image {
+        order: 2;
+      }
+    }
+
+    .title {
+      font-family: var(--font-cyber);
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    @media (min-width: 768px) {
+      .title {
+        font-size: 3.75rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .title {
+        font-size: 4.5rem;
+      }
+    }
+
+    .profile-image {
+      width: 16rem;
+      height: 16rem;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.5s;
+    }
+
+    .profile-image:hover {
+      filter: grayscale(0%);
+    }
+
+    @media (min-width: 768px) {
+      .profile-image {
+        width: 20rem;
+        height: 20rem;
+      }
+    }
+
+    .profile-wrapper {
+      position: relative;
+      padding: 0.5rem;
+      background: hsla(0, 0%, 5%, 0.5);
+    }
+
+    .profile-corner-tr {
+      position: absolute;
+      top: -1rem;
+      right: -1rem;
+      width: 2rem;
+      height: 2rem;
+      border-top: 2px solid var(--primary);
+      border-right: 2px solid var(--primary);
+    }
+
+    .profile-corner-bl {
+      position: absolute;
+      bottom: -1rem;
+      left: -1rem;
+      width: 2rem;
+      height: 2rem;
+      border-bottom: 2px solid var(--accent);
+      border-left: 2px solid var(--accent);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: hsla(120, 100%, 50%, 0.1);
+      color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .btn-accent {
+      background: hsla(0, 100%, 50%, 0.1);
+      color: var(--accent);
+    }
+
+    .btn-accent:hover {
+      background: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 1rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-cyber);
+      font-size: 1.875rem;
+      color: var(--primary);
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 3rem;
+      }
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      gap: 2rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .skills-card {
+      padding: 1.5rem;
+      background: hsla(0, 0%, 5%, 0.5);
+    }
+
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-name {
+      color: var(--primary);
+    }
+
+    .skill-level {
+      color: var(--secondary);
+    }
+
+    .skill-bar-container {
+      height: 0.75rem;
+      background: var(--muted);
+      border-radius: 0.125rem;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      transition: width 1s ease-out;
+      position: relative;
+    }
+
+    .skill-bar-shine {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+      animation: pulse 2s infinite;
+    }
+
+    /* Specializations Grid */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: hsla(0, 0%, 10%, 0.3);
+      transition: background 0.3s;
+    }
+
+    .spec-item:hover {
+      background: hsla(120, 100%, 50%, 0.1);
+    }
+
+    .spec-item svg {
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    .spec-item:hover svg {
+      color: var(--accent);
+    }
+
+    .spec-label {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      transition: color 0.3s;
+    }
+
+    .spec-item:hover .spec-label {
+      color: var(--primary);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-card {
+      background: var(--card);
+      padding: 1.5rem;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-title h3 {
+      font-family: var(--font-cyber);
+      font-size: 1.125rem;
+      color: var(--primary);
+    }
+
+    .project-status {
+      font-size: 0.75rem;
+    }
+
+    .status-active { color: var(--primary); }
+    .status-classified { color: var(--accent); }
+    .status-archived { color: var(--muted-foreground); }
+
+    .project-desc {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      background: var(--muted);
+      color: var(--secondary);
+      border: 1px solid hsla(180, 100%, 50%, 0.3);
+      border-radius: 0.125rem;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 1rem;
+      padding-top: 0.5rem;
+    }
+
+    .project-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    .project-btn:hover {
+      color: var(--secondary);
+    }
+
+    /* Contact Section */
+    .contact-card {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 2rem;
+      background: hsla(0, 0%, 5%, 0.5);
+    }
+
+    .contact-intro {
+      text-align: center;
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: hsla(0, 0%, 10%, 0.3);
+      margin-bottom: 1.5rem;
+      transition: background 0.3s;
+    }
+
+    .contact-link:hover {
+      background: hsla(120, 100%, 50%, 0.1);
+    }
+
+    .contact-icon {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: hsla(120, 100%, 50%, 0.1);
+      transition: background 0.3s;
+    }
+
+    .contact-link:hover .contact-icon {
+      background: var(--primary);
+    }
+
+    .contact-link:hover .contact-icon svg {
+      color: var(--primary-foreground);
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-value {
+      color: var(--primary);
+    }
+
+    .contact-action {
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    .contact-footer {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-content {
+        flex-direction: row;
+      }
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    .footer-status {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--background);
+    }
+
+    .loading-content {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .loading-title {
+      font-family: var(--font-cyber);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.2em;
+    }
+
+    @media (min-width: 768px) {
+      .loading-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    .loading-subtitle {
+      font-size: 0.875rem;
+      color: var(--accent);
+    }
+
+    .loading-terminal {
+      min-width: 300px;
+      padding: 1.5rem;
+      background: hsla(0, 0%, 3%, 0.8);
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .loading-terminal {
+        min-width: 500px;
+      }
+    }
+
+    .loading-text-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: left;
+    }
+
+    .loading-prompt {
+      color: var(--accent);
+    }
+
+    .loading-text {
+      color: var(--primary);
+    }
+
+    .progress-container {
+      margin-top: 1rem;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 0.5rem;
+      background: var(--muted);
+      border-radius: 0.125rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      transition: width 0.3s;
+    }
+
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .loading-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse 1s infinite;
+    }
+
+    /* Matrix Canvas */
+    #matrix-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    /* Hidden class */
+    .hidden {
+      display: none !important;
+    }
+
+    .opacity-0 {
+      opacity: 0;
+    }
+
+    .opacity-100 {
+      opacity: 1;
+    }
+
+    .transition-opacity {
+      transition: opacity 1s;
+    }
+
+    /* Animations */
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+    }
+
+    @keyframes glitch-1 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translate(-3px); }
+      40% { clip-path: inset(40% 0 40% 0); transform: translate(3px); }
+      60% { clip-path: inset(60% 0 20% 0); transform: translate(-3px); }
+      80% { clip-path: inset(80% 0 0 0); transform: translate(3px); }
+    }
+
+    @keyframes glitch-2 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(80% 0 0 0); transform: translate(3px); }
+      40% { clip-path: inset(60% 0 20% 0); transform: translate(-3px); }
+      60% { clip-path: inset(40% 0 40% 0); transform: translate(3px); }
+      80% { clip-path: inset(20% 0 60% 0); transform: translate(-3px); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { 
+        box-shadow: 0 0 5px hsla(120, 100%, 50%, 0.5), 0 0 10px hsla(120, 100%, 50%, 0.3);
+      }
+      50% { 
+        box-shadow: 0 0 20px hsla(120, 100%, 50%, 0.8), 0 0 40px hsla(120, 100%, 50%, 0.5);
+      }
+    }
+
+    @keyframes card-glitch {
+      0% { transform: translate(0); filter: hue-rotate(0deg); }
+      10% { transform: translate(-5px, 5px); }
+      20% { transform: translate(5px, -5px); filter: hue-rotate(90deg); }
+      30% { transform: translate(-5px, -5px); }
+      40% { transform: translate(5px, 5px); filter: hue-rotate(180deg); }
+      50% { transform: translate(0); }
+      60% { transform: translate(-3px, 3px); filter: hue-rotate(270deg); }
+      70% { transform: translate(3px, -3px); }
+      80% { transform: translate(-3px, -3px); filter: hue-rotate(360deg); }
+      90% { transform: translate(3px, 3px); }
+      100% { transform: translate(0); filter: hue-rotate(0deg); }
+    }
+
+    /* Icon placeholder styles */
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      display: inline-block;
+    }
+
+    .icon-sm {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .icon-lg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  </style>
+</head>
+<body class="matrix-bg scanlines">
+  <!-- Matrix Rain Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen matrix-bg scanlines">
+    <div class="loading-content">
+      <div class="loading-title neon-glow">SYSTEM ACCESS</div>
+      <div class="loading-subtitle danger-glow">[ CLASSIFIED ]</div>
+
+      <div class="loading-terminal cyber-border">
+        <div class="loading-text-line">
+          <span class="loading-prompt">&gt;</span>
+          <span id="loading-text" class="loading-text"></span>
+          <span class="terminal-cursor">█</span>
+        </div>
+        
+        <div class="progress-container">
+          <div class="progress-header">
+            <span>PROGRESS</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar cyber-border">
+            <div id="progress-fill" class="progress-fill skill-bar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="loading-dots">
+        <div class="loading-dot" style="animation-delay: 0s"></div>
+        <div class="loading-dot" style="animation-delay: 0.2s"></div>
+        <div class="loading-dot" style="animation-delay: 0.4s"></div>
+        <div class="loading-dot" style="animation-delay: 0.6s"></div>
+        <div class="loading-dot" style="animation-delay: 0.8s"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content" class="hidden opacity-0 transition-opacity">
+    <!-- Navigation -->
+    <nav class="cyber-border">
+      <div class="container">
+        <div class="nav-content">
+          <div class="nav-logo">
+            <svg class="icon-lg" style="color: var(--accent)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="5"/>
+              <path d="M20 21a8 8 0 0 0-16 0"/>
+              <path d="M12 13v8"/>
+              <path d="m9 18 3-3 3 3"/>
+            </svg>
+            <span style="font-family: var(--font-cyber); font-size: 1.125rem; color: var(--primary); letter-spacing: 0.2em" class="neon-glow">
+              SAMARTH
+            </span>
+          </div>
+          <div class="nav-links">
+            <a href="#about" class="nav-link">[ ABOUT ]</a>
+            <a href="#skills" class="nav-link">[ SKILLS ]</a>
+            <a href="#projects" class="nav-link">[ PROJECTS ]</a>
+            <a href="#contact" class="nav-link">[ CONTACT ]</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="hero">
+      <div class="container" style="padding: 0 1rem;">
+        <div class="hero-grid">
+          <div class="hero-text" style="display: flex; flex-direction: column; gap: 2rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent); font-size: 0.875rem; margin-bottom: 1rem;">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 17 10 11 4 5"/>
+                  <line x1="12" x2="20" y1="19" y2="19"/>
+                </svg>
+                <span>root@system:~$</span>
+              </div>
+              <h1 class="title text-glitch neon-glow" data-text="SAMARTH">SAMARTH</h1>
+              <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--muted-foreground); margin-top: 0.5rem;">
+                <svg class="icon-sm" style="color: var(--accent)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>Karnataka, India</span>
+              </div>
+            </div>
+
+            <div class="cyber-border" style="padding: 1.5rem; background: hsla(0, 0%, 5%, 0.5);">
+              <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                <span style="color: var(--accent)">&gt;</span>
+                <div id="typewriter" style="color: var(--primary); font-size: 0.875rem; line-height: 1.6;"></div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+              <a href="#contact" class="cyber-border btn btn-primary">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                INITIATE_CONTACT
+              </a>
+              <a href="#projects" class="cyber-border btn btn-accent">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                VIEW_PROJECTS
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <div style="position: relative;">
+              <div style="position: absolute; inset: 0; background: linear-gradient(135deg, hsla(120, 100%, 50%, 0.2), transparent, hsla(0, 100%, 50%, 0.2)); filter: blur(48px);"></div>
+              <div class="profile-wrapper cyber-border animate-pulse-glow" style="position: relative;">
+                <img
+                  src="https://files.catbox.moe/u88hcx.jpeg"
+                  alt="Samarth"
+                  class="profile-image"
+                />
+                <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--background), transparent);"></div>
+                <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem;">
+                  <div style="font-size: 0.75rem; color: hsla(120, 100%, 50%, 0.8);">
+                    STATUS: <span style="color: var(--accent);">ONLINE</span>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-corner-tr"></div>
+              <div class="profile-corner-bl"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+            </svg>
+            <span>[ SYSTEM_CAPABILITIES ]</span>
+          </div>
+          <h2 class="section-title neon-glow">SKILLS_MATRIX</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skills-card cyber-border">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); margin-bottom: 1rem;">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"/>
+                <line x1="12" x2="20" y1="19" y2="19"/>
+              </svg>
+              <span>TECHNICAL_SKILLS</span>
+            </div>
+            
+            <div id="skills-container"></div>
+          </div>
+
+          <div class="skills-card cyber-border">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); margin-bottom: 1rem;">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+                <path d="M3 12A9 3 0 0 0 21 12"/>
+              </svg>
+              <span>SPECIALIZATIONS</span>
+            </div>
+            
+            <div class="spec-grid">
+              <div class="spec-item cyber-border">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                </svg>
+                <span class="spec-label">Cybersecurity</span>
+              </div>
+              <div class="spec-item cyber-border">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                <span class="spec-label">Web Development</span>
+              </div>
+              <div class="spec-item cyber-border">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" x2="22" y1="12" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                <span class="spec-label">Networking</span>
+              </div>
+              <div class="spec-item cyber-border">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 17 10 11 4 5"/>
+                  <line x1="12" x2="20" y1="19" y2="19"/>
+                </svg>
+                <span class="spec-label">Scripting</span>
+              </div>
+              <div class="spec-item cyber-border">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                  <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+                  <path d="M3 12A9 3 0 0 0 21 12"/>
+                </svg>
+                <span class="spec-label">Databases</span>
+              </div>
+              <div class="spec-item cyber-border">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                <span class="spec-label">Automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+            <span>[ CLASSIFIED_OPERATIONS ]</span>
+          </div>
+          <h2 class="section-title neon-glow">PROJECTS_ARCHIVE</h2>
+        </div>
+
+        <div class="projects-grid" id="projects-container"></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" x2="11" y1="2" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            <span>[ SECURE_CHANNEL ]</span>
+          </div>
+          <h2 class="section-title neon-glow">INITIATE_CONTACT</h2>
+        </div>
+
+        <div class="contact-card cyber-border">
+          <div class="contact-intro">
+            &gt; All communications are encrypted. Choose your preferred channel:
+          </div>
+
+          <a href="mailto:samarth-153@outlook.com" class="contact-link cyber-border">
+            <div class="contact-icon cyber-border">
+              <svg class="icon-lg" style="color: var(--primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">EMAIL_PROTOCOL</div>
+              <div class="contact-value neon-glow">samarth-153@outlook.com</div>
+            </div>
+            <span class="contact-action">[ CONNECT ]</span>
+          </a>
+
+          <a href="https://t.me/tech_Samarth" target="_blank" rel="noopener noreferrer" class="contact-link cyber-border">
+            <div class="contact-icon cyber-border" style="background: hsla(180, 100%, 50%, 0.1)">
+              <svg class="icon-lg" style="color: var(--secondary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" x2="11" y1="2" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">TELEGRAM_CHANNEL</div>
+              <div style="color: var(--secondary)">@tech_Samarth</div>
+            </div>
+            <span class="contact-action">[ CONNECT ]</span>
+          </a>
+
+          <div class="contact-footer">
+            <div style="font-size: 0.75rem; color: var(--muted-foreground);">
+              <span style="color: var(--accent)">&gt;</span> Response time: 24-48 hours
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <svg class="icon" style="color: var(--accent)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="5"/>
+              <path d="M20 21a8 8 0 0 0-16 0"/>
+              <path d="M12 13v8"/>
+              <path d="m9 18 3-3 3 3"/>
+            </svg>
+            <span>© 2024 SAMARTH. All rights reserved.</span>
+          </div>
+          <div class="footer-status">
+            <span style="color: var(--primary)">STATUS:</span> ALWAYS WATCHING
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Data
+    const skills = [
+      { name: "PYTHON", level: 75 },
+      { name: "JAVASCRIPT", level: 70 },
+      { name: "NETWORK_SECURITY", level: 65 },
+      { name: "LINUX", level: 80 },
+      { name: "WEB_DEV", level: 72 },
+      { name: "DATABASE", level: 60 },
+    ];
+
+    const projects = [
+      {
+        title: "SHADOW_NET",
+        description: "A dark web crawler and intelligence gathering tool for OSINT operations. Scans and indexes hidden services.",
+        tags: ["Python", "Tor", "OSINT"],
+        status: "active",
+      },
+      {
+        title: "PHANTOM_KEYLOGGER",
+        description: "Educational keystroke monitoring system with encrypted data transmission. Built for security research.",
+        tags: ["C++", "Encryption", "Stealth"],
+        status: "classified",
+      },
+      {
+        title: "VENOM_INJECT",
+        description: "SQL injection testing framework for penetration testing. Automated vulnerability scanner.",
+        tags: ["Python", "SQL", "Pentesting"],
+        status: "active",
+      },
+      {
+        title: "CIPHER_VAULT",
+        description: "Military-grade encryption tool for secure file storage. Uses AES-256 and RSA-4096.",
+        tags: ["Rust", "Crypto", "Security"],
+        status: "archived",
+      },
+    ];
+
+    const bioText = "A 19-year-old digital ghost from Karnataka, India. Self-taught code warrior navigating the digital underworld. Passionate about breaking systems to understand how they work, then rebuilding them stronger. When not coding, I'm exploring the depths of cybersecurity, reverse engineering, and ethical hacking. Remember: Knowledge is power, but with great power comes great responsibility.";
+
+    const loadingTexts = [
+      "INITIALIZING SYSTEM...",
+      "BYPASSING FIREWALL...",
+      "ACCESSING MAINFRAME...",
+      "DECRYPTING DATA...",
+      "ESTABLISHING CONNECTION...",
+      "ACCESS GRANTED"
+    ];
+
+    // Matrix Rain Effect
+    function initMatrixRain() {
+      const canvas = document.getElementById('matrix-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+      const charArray = chars.split("");
+      const fontSize = 14;
+      const columns = canvas.width / fontSize;
+      const drops = [];
+
+      for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100;
+      }
+
+      function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = charArray[Math.floor(Math.random() * charArray.length)];
+          ctx.fillStyle = Math.random() > 0.98 ? "#ff0000" : "#00ff00";
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+
+      setInterval(draw, 50);
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    }
+
+    // Loading Screen
+    function runLoadingScreen() {
+      const loadingTextEl = document.getElementById('loading-text');
+      const progressFill = document.getElementById('progress-fill');
+      const progressPercent = document.getElementById('progress-percent');
+      
+      let currentIndex = 0;
+      let charIndex = 0;
+      let progress = 0;
+
+      const typeInterval = setInterval(() => {
+        if (currentIndex < loadingTexts.length) {
+          const currentText = loadingTexts[currentIndex];
+          if (charIndex <= currentText.length) {
+            loadingTextEl.textContent = currentText.substring(0, charIndex);
+            charIndex++;
+          } else {
+            currentIndex++;
+            charIndex = 0;
+            progress = (currentIndex / loadingTexts.length) * 100;
+            progressFill.style.width = progress + '%';
+            progressPercent.textContent = Math.round(progress) + '%';
+          }
+        }
+      }, 50);
+
+      setTimeout(() => {
+  clearInterval(typeInterval);
+
+  const loading = document.getElementById('loading-screen');
+  loading.style.display = "none"; // 🔥 IMPORTANT
+
+  const mainContent = document.getElementById('main-content');
+  mainContent.classList.remove('hidden');
+
+  document.body.style.overflowY = "auto"; // 🔥 FORCE SCROLL
+
+  setTimeout(() => {
+    mainContent.classList.remove('opacity-0');
+    mainContent.classList.add('opacity-100');
+    initTypewriter();
+    initSkillBars();
+  }, 100);
+}, 3000);
+    }
+
+    // Typewriter Effect
+    function initTypewriter() {
+      const typewriterEl = document.getElementById('typewriter');
+      let index = 0;
+      
+      function type() {
+        if (index < bioText.length) {
+          typewriterEl.innerHTML = bioText.substring(0, index + 1) + '<span class="terminal-cursor">█</span>';
+          index++;
+          setTimeout(type, 30);
+        } else {
+          typewriterEl.innerHTML = bioText + '<span class="terminal-cursor">█</span>';
+        }
+      }
+      
+      type();
+    }
+
+    // Skill Bars
+    function initSkillBars() {
+      const container = document.getElementById('skills-container');
+      
+      skills.forEach((skill, index) => {
+        const skillEl = document.createElement('div');
+        skillEl.className = 'skill-item';
+        skillEl.innerHTML = `
+          <div class="skill-header">
+            <span class="skill-name"><span style="color: var(--accent)">&gt;</span> ${skill.name}</span>
+            <span class="skill-level">${skill.level}%</span>
+          </div>
+          <div class="skill-bar-container cyber-border">
+            <div class="skill-bar-fill skill-bar" style="width: 0%">
+              <div class="skill-bar-shine"></div>
+            </div>
+          </div>
+        `;
+        container.appendChild(skillEl);
+        
+        setTimeout(() => {
+          skillEl.querySelector('.skill-bar-fill').style.width = skill.level + '%';
+        }, index * 200);
+      });
+    }
+
+    // Projects
+    function initProjects() {
+      const container = document.getElementById('projects-container');
+      
+      const statusColors = {
+        active: 'status-active',
+        archived: 'status-archived',
+        classified: 'status-classified'
+      };
+      
+      const statusLabels = {
+        active: '[ ACTIVE ]',
+        archived: '[ ARCHIVED ]',
+        classified: '[ CLASSIFIED ]'
+      };
+      
+      projects.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card cyber-border glitch-card';
+        card.innerHTML = `
+          <div class="project-header">
+            <div class="project-title">
+              <svg class="icon" style="color: var(--primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"/>
+                <line x1="12" x2="20" y1="19" y2="19"/>
+              </svg>
+              <h3 class="neon-glow">${project.title}</h3>
+            </div>
+            <span class="project-status ${statusColors[project.status]}">${statusLabels[project.status]}</span>
+          </div>
+          <p class="project-desc">${project.description}</p>
+          <div class="project-tags">
+            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+          <div class="project-actions">
+            <button class="project-btn">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+              SOURCE
+            </button>
+            <button class="project-btn">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" x2="21" y1="14" y2="3"/>
+              </svg>
+              DEPLOY
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', () => {
+      initMatrixRain();
+      initProjects();
+      runLoadingScreen();
+    });
+  </script>
+</body>
+</html>
